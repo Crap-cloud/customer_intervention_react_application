@@ -40,10 +40,12 @@ class App extends Component {
 
   logOut() {
     AuthService.logout();
+    localStorage.removeItem("username");
     this.setState({
       showModeratorBoard: false,
       showAdminBoard: false,
       currentUser: undefined,
+      
     });
   }
 
@@ -95,11 +97,7 @@ class App extends Component {
                   {currentUser.username}
                 </Link>
               </li>
-              <li className="nav-item">
-                <a href="/login" className="nav-link" onClick={this.logOut}>
-                  LogOut
-                </a>
-              </li>
+              
             </div>
           ) : (
             <div className="navbar-nav ml-auto">
@@ -110,9 +108,9 @@ class App extends Component {
               </li>
 
               <li className="nav-item">
-                <Link to={"/register"} className="nav-link">
-                  Sign Up
-                </Link>
+                <a href="/login" className="nav-link" onClick={this.logOut}>
+                  LogOut
+                </a>
               </li>
             </div>
           )}

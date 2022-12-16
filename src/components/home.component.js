@@ -1,6 +1,17 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
-import UserService from "../services/user.service";
+// import UserService from "../services/user.service";
+// import Newintervention from "./newintervention.component";
+import Table from "./table.component"
+
+const token = localStorage.getItem("username");
+console.log(token);
+// const headerRequest = {
+//   headers: {
+//     Authorization: `Bearer ${token}`,
+//   },
+// };
 
 export default class Home extends Component {
   constructor(props) {
@@ -10,31 +21,14 @@ export default class Home extends Component {
       content: ""
     };
   }
-
-  componentDidMount() {
-    UserService.getPublicContent().then(
-      response => {
-        this.setState({
-          content: response.data
-        });
-      },
-      error => {
-        this.setState({
-          content:
-            (error.response && error.response.data) ||
-            error.message ||
-            error.toString()
-        });
-      }
-    );
-  }
-
+  
   render() {
     return (
       <div className="container">
         <header className="jumbotron">
-          <h3>{this.state.content}</h3>
-          <h1>Test</h1>
+         <Table />
+         <Link to={"/interventions/new"}>New intervention</Link>
+         {/* <a href="interventions/new">New intervention</a> */}
         </header>
       </div>
     );

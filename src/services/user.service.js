@@ -1,11 +1,11 @@
 import axios from 'axios';
 import authHeader from './auth-header';
 
-const API_URL = '/swagger-ui/index.html';
+const API_URL = 'https://java-api.codeboxxtest.xyz/authenticate?email=customer1%40business.com&password=password123';
 
 class UserService {
   getPublicContent() {
-    return axios.get(API_URL + 'all');
+    return axios.get("/all");
   }
 
   getUserBoard() {
